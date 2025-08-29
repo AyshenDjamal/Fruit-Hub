@@ -1,4 +1,3 @@
-/*
 package com.example.fruithub.service;
 
 import com.example.fruithub.entity.User;
@@ -16,4 +15,3 @@ public class CartService {
         return cartRepository.getTotalItemCountByUser(user);
     }
 }
-*/

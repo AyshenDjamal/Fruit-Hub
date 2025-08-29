@@ -1,8 +1,10 @@
 package com.example.fruithub.controller;
 
 import com.example.fruithub.dto.ProductDto;
+import com.example.fruithub.entity.User;
 import com.example.fruithub.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +17,7 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
-   // private final CartService cartService;
+    private final CartService cartService;
 
     @GetMapping
     public List<ProductDto> getAllProducts(
@@ -28,8 +30,8 @@ public class ProductController {
     }
 
 
-    /*@GetMapping("/count")
+    @GetMapping("/count")
     public Integer getProductsCount(@AuthenticationPrincipal User user){
         return cartService.getTotalItems(user);
-    }*/
+    }
 }

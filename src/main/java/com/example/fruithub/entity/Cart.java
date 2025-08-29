@@ -1,4 +1,3 @@
-/*
 package com.example.fruithub.entity;
 
 import jakarta.persistence.*;
@@ -45,4 +44,3 @@ public class Cart {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }
-*/
