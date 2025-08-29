@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/account")
 @RequiredArgsConstructor
@@ -21,8 +23,9 @@ public class UserController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody SignUpDto signUp){
-        return ResponseEntity.ok(userService.register(signUp));
+    public ResponseEntity<Object> register(@Valid @RequestBody SignUpDto signUp){
+        userService.register(signUp);
+        return ResponseEntity.ok("Registered Successfully");
     }
 
     @PostMapping("/login")

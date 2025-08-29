@@ -1,3 +1,4 @@
+/*
 package com.example.fruithub.entity;
 
 import jakarta.persistence.*;
@@ -11,33 +12,37 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Data
 @Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "status")
-public class Status {
+@Table(name = "carts")
+public class Cart {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private UUID id;
+    private UUID uuid;
+    private Integer quantity;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status_id", nullable = true)
-    private Status parentStatus;
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }
+*/

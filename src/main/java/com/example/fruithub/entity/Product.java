@@ -13,31 +13,42 @@ import java.util.UUID;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "status")
-public class Status {
+@Table(name = "products")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
     private UUID id;
-
-    @Column(name = "name", nullable = false)
     private String name;
+    private Double price;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "stock_quantity", nullable = false)
+    private Integer stockQuantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status_id", nullable = true)
-    private Status parentStatus;
+    @ManyToOne
+    @JoinColumn(name = "unit_id", nullable = false)
+    private Unit unit;
+
+    @ManyToOne
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+//    @OneToMany(mappedBy = "product")
+//    private List<Photo> photos;
+
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
 }

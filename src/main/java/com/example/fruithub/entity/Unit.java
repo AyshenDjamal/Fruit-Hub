@@ -16,25 +16,21 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "status")
-public class Status {
+@Table(name = "units")
+public class Unit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "name", nullable = false)
     private String name;
+    private String code;
 
-    @Column(name = "description", nullable = false)
-    private String description;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status_id", nullable = true)
-    private Status parentStatus;
+    @ManyToOne
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
