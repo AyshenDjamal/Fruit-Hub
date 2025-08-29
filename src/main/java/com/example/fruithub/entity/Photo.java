@@ -29,7 +29,7 @@ public class Photo {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @ManyToOnebvsd
+    @ManyToOne
     @JoinColumn(name= "status_id", nullable = false)
     private Status status;
 

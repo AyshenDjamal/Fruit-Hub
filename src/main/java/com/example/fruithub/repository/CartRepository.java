@@ -1,4 +1,3 @@
-/*
 package com.example.fruithub.repository;
 
 import com.example.fruithub.entity.Cart;
@@ -13,4 +12,3 @@ public interface CartRepository extends JpaRepository<Cart, UUID> {
     @Query("SELECT COALESCE(SUM(c.quantity), 0) FROM Cart c WHERE c.user = :user")
     Integer getTotalItemCountByUser(@Param("user") User user);
 }
-*/
